@@ -30,14 +30,19 @@ function App() {
     setdarkMode(prev=>!prev)
   }
   // console.log(tasklist)
-  let nid
+  let updatetask=(item,index)=>{
+    // console.log(item)
+    setTaskList(prev=>{
+      return prev.slice(0,index).concat(item).concat(prev.slice(index+1))
+    })
+  }
   
 
   return (
     <>
        <Navbar darkmode={darkmode} updmode={updmode} />
-      <Additem addtask={addtask} id={nid}/>
-      <Tasklist tasklist={tasklist} deltask={deltask} />
+      <Additem addtask={addtask} />
+      <Tasklist tasklist={tasklist} deltask={deltask} updatetask={updatetask} />
     </>
   )
 }

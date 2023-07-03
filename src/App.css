@@ -1,0 +1,7 @@
+.btn:hover{
+    border-color: black;
+}
+.bg-dark.btn:hover{
+    border-color: white;
+
+}
