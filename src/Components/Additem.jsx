@@ -1,8 +1,17 @@
 import React, { useState } from 'react'
 import { nanoid } from 'nanoid'
-
+import { useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import {actionCreators} from "../state/index"
 
 export default function Additem(props) {
+   const dispatch=useDispatch()
+   const actions=bindActionCreators(actionCreators,dispatch)
+
+   // const dispatch=useDispatch()
+   // const actions=bindActionCreators(actionCreators,dispatch)
+
+
    let style1={
        height:'40px',
        padding:'5px'
@@ -10,7 +19,8 @@ export default function Additem(props) {
 
    const [task,settask]=useState({
       body:"",
-      id:0
+      id:0,
+      status:'incomplete'
       
    })
 //    console.log(task.id)
@@ -30,6 +40,7 @@ export default function Additem(props) {
       return
       settask(prev=>{return {...prev,id:nanoid()}})
       console.log(task.id)
+      actions.additem(task)
       props.addtask(task)
    }
 // console.log(task)

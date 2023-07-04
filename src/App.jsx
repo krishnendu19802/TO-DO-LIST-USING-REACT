@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Additem from './Components/Additem'
 import Navbar from './Components/Navbar'
-import Tasklist from './Tasklist'
+import Tasklist from './Components/Tasklist'
 import { nanoid } from 'nanoid'
 
 
@@ -27,6 +27,14 @@ function App() {
     })
   }
   function updmode(){
+    if(darkmode!==true){
+      document.body.style.backgroundColor='#343a40'
+    }
+    else{
+      document.body.style.backgroundColor='white'
+
+    }
+    
     setdarkMode(prev=>!prev)
   }
   // console.log(tasklist)
@@ -42,7 +50,7 @@ function App() {
     <>
        <Navbar darkmode={darkmode} updmode={updmode} />
       <Additem addtask={addtask} />
-      <Tasklist tasklist={tasklist} deltask={deltask} updatetask={updatetask} />
+      <Tasklist tasklist={tasklist} deltask={deltask} updatetask={updatetask} darkmode={darkmode} />
     </>
   )
 }
