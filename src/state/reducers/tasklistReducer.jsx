@@ -12,14 +12,29 @@ const reducer =(state=[],action)=>{
     }
 
     else if(action.type==='changeitem'){
-        let newarr=state.slice(0,action.index).concat(action.item).concat(state.slice(action.index+1))
+        // let newarr=state.slice(0,action.index).concat(action.item).concat(state.slice(action.index+1))
+        let newarr=state.map((task)=>{
+            if(task.id===action.item.id)
+            return action.item
+            else
+            return task
+        })
         // console.log(newarr)
         return newarr
     }
     else if(action.type==='completeitem'){
-        let newarr={...state[action.index],status:'complete'}
+        // let newarr={...state[action.index],status:'complete'}
         // console.log(newarr)
-        newarr=state.slice(0,action.index).concat(newarr).concat(state.slice(action.index+1))
+        let newarr=state.map((task)=>{
+            if(task.id===action.id)
+            return {...task,status:'complete'}
+            else
+            return task
+        })
+        // for(let i=0;i<state.length;i++){
+        //     if(state[i].id===action.id)
+        // }
+        // newarr=state.slice(0,action.index).concat(newarr).concat(state.slice(action.index+1))
         return newarr
     }
     else{

@@ -4,8 +4,17 @@ import { useSelector } from 'react-redux'
 // import image from "../ Components"
 
 export default function Tasklist(props) {
-
+    let tlist
     const tasklist=useSelector(state=>state.tasklist)
+    if(props.sort[0]===false){
+       tlist=tasklist
+    }
+    else{
+        tlist=tasklist.filter((task)=>{
+            return task.status===props.sort[1]
+        })
+    }
+
     // console.log(tasklist)
    
     let style1={
@@ -16,19 +25,19 @@ export default function Tasklist(props) {
 
     return (
         <div className='conatainer-fluid mx-5  ' >
-            {tasklist.length===0 && 
+            {tlist.length===0 && 
             <>
-                     <div className=' d-flex justify-content-center rounded ' style={style1}>
+                     <div className=' d-flex justify-content-center rounded ' style={{...style1}}>
                      <img src={"/src/Components/techny-empty-clipboard.png"} alt="empty"/>
                      </div>
                      </>
                     }
                     <div style={{...style1}}>
-            {tasklist[0] && tasklist.map((item, index) => {
+            {tlist[0] && tlist.map((item, index) => {
                 return (
                     
                     
-                    <Itemdisplay index={index} item={item} darkmode={props.darkmode}/>
+                    <Itemdisplay key={item.id} index={index} item={item} darkmode={props.darkmode}/>
                     
                     )
                 })}

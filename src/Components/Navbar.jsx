@@ -14,7 +14,12 @@ export default function Navbar(props) {
 
     return (
         <div className={`container-fluid d-flex justify-content-center align-items-center px-3 fs-2 mb-5  bg-${bgcol} text-${textcol} `}
-        style={{height:'50px'}} >
+            style={{ height: '50px' }} >
+            <button className={`btn me-auto bg-${bgcol} text-${textcol}`} onClick={props.handleclick}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </button>
             Todo-List
             <button className={`btn   ms-auto bg-${bgcol} text-${textcol}`} onClick={props.updmode}>
                 {props.darkmode && <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-brightness-low-fill" viewBox="0 0 16 16">

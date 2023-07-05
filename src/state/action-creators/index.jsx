@@ -17,21 +17,21 @@ export const delitem=(id)=>{
     }
 }
 
-export const changeitem=(item,index)=>{
+export const changeitem=(item)=>{
     return (dispatch)=>{
         dispatch({
             type:'changeitem',
-            item:{...item},
-            index:index
+            item:item
+            // index:index
         })
     }
 }
 
-export const completeitem=(index)=>{
+export const completeitem=(id)=>{
     return (dispatch)=>{
         dispatch({
             type:'completeitem',
-            index:index
+            id:id
         })
     }
 }

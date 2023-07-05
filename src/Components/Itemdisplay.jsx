@@ -16,7 +16,7 @@ export default function Itemdisplay({item,index,deltask,updatetask,darkmode}) {
         margin: '25px 1%',
         padding: '5px',
         width: '98%',
-        color:item.status==='complete'?'gray':'',
+        color:item.status==='complete'?'gray':(darkmode?'white':'black'),
         textDecoration:item.status==='complete'?'line-through':'none'
 
 
@@ -38,7 +38,7 @@ export default function Itemdisplay({item,index,deltask,updatetask,darkmode}) {
     let confirmedit=()=>{
         // console.log(newitem)
         setedit(prev=>!prev)
-        actions.changeitem(newitem,index)
+        actions.changeitem(newitem)
         // updatetask(newitem,index)
     }
     let handlekey=(event)=>{
@@ -52,7 +52,7 @@ export default function Itemdisplay({item,index,deltask,updatetask,darkmode}) {
     }
  
     let handlecomplete=()=>{
-        actions.completeitem(index)
+        actions.completeitem(item.id)
     }
 
   return (
@@ -69,8 +69,7 @@ export default function Itemdisplay({item,index,deltask,updatetask,darkmode}) {
                             </svg>
                         </button>}
 
-                        {!edit  && <input type="text" value={newitem.body} style={{backgroundColor:'#70737694',
-        borderRadius:'5px',}} onChange={handlechange} onKeyDown={handlekey} />}
+                        {!edit  && <input type="text" value={newitem.body} style={{backgroundColor:darkmode?'#70737694':'white',color:darkmode?'white':'black',borderRadius:'5px',}} onChange={handlechange} onKeyDown={handlekey} />}
                         {!edit &&  
                             <button className={`btn ms-auto ${darkmode?"text-light":""}`} onClick={confirmedit}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check2" viewBox="0 0 16 16">
