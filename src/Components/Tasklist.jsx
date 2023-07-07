@@ -28,7 +28,7 @@ export default function Tasklist(props) {
             {tlist.length===0 && 
             <>
                      <div className=' d-flex justify-content-center rounded ' style={{...style1}}>
-                     <img src={"/src/Components/techny-empty-clipboard.png"} alt="empty"/>
+                     <img src={"../src/Components/techny-empty-clipboard.png"} alt="empty"/>
                      </div>
                      </>
                     }
