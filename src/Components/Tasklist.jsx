@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Itemdisplay from './Itemdisplay'
 import { useSelector } from 'react-redux'
-// import image from "../ Components"
+import Image from "./Image"
 
 export default function Tasklist(props) {
     let tlist
@@ -28,7 +28,7 @@ export default function Tasklist(props) {
             {tlist.length===0 && 
             <>
                      <div className=' d-flex justify-content-center rounded ' style={{...style1}}>
-                     <img src={"../src/Components/techny-empty-clipboard.png"} alt="empty"/>
+                    <Image/>
                      </div>
                      </>
                     }
